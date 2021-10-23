@@ -256,7 +256,7 @@ function threadTest() {
   threadAfter
 }
 function threadBefore() {
-                 #线程数
+  # 线程数
   local params=('4'   )
   for ((i=0; $# > 0; i++)) ; do
     item=${1}
@@ -270,7 +270,7 @@ function threadBefore() {
   exec 1000<>${tempfifo}
   rm -rf $tempfifo
 
-#  预热信号数
+# 预热信号数
   for ((i=1; i<=${params[0]}; i++)); do
     echo `date "+%Y-%m-%d %H:%M:%S"` >&1000
   done

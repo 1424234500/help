@@ -36,9 +36,9 @@ vv_money emp.money%TYPE;
 
 
 CURSOR test_cursor2(tid int) IS SELECT id ID_NAME, name NAME_NAME, dept DEPT_NAME from test where id > tid; 
---������α���ʹ���˹�Ա�ò��� �α��еĲ�����ͬһ��ĺ�������
+--定义的游标中使用了雇员好参数 游标中的掺乎用同一般的函数参数
 test_rec test%ROWTYPE;
---�����˼�¼�б������ڽ����α귵�ص�ÿһ�м�¼
+--定义了记录行变量用于接收游标返回的每一行记录
 
  
 
@@ -47,15 +47,15 @@ begin
 
 
 /*
-   1. ����һ���������Ĵ洢���̣����е�����������ڽ���Ա���ţ�Ĭ��ֵ
-Ϊ��7654����Ȼ���� emp ���в�ѯ��Ա�������������š�нˮ��Ϣ��ͨ�� dbms_output
-������� 
-ָ��������Ĭ��ֵ�� 
-������ [IN | OUT | IN OUT] �������� [{:= | DEFAULT} ����ʽ] 
-���磺a_deptno number := 10 
-a. ���ù��̣������ò���ֵ 
-b. ���ù��̣�����ֵΪ��7788�� 
-c. ���ù��̣�����ֵΪ��7789��
+   1. 创建一个带参数的存储过程，其中的输入参数用于接收员工号，默认值
+为‘7654’，然后在 emp 表中查询该员工的姓名、部门、薪水信息，通过 dbms_output
+包输出。 
+指定参数的默认值： 
+参数名 [IN | OUT | IN OUT] 数据类型 [{:= | DEFAULT} 表达式] 
+例如：a_deptno number := 10 
+a. 调用过程，不设置参数值 
+b. 调用过程，参数值为‘7788’ 
+c. 调用过程，参数值为‘7789’
 ,
  p_name out scott.emp.name%type,
  p_job out scott.emp.job%type,
@@ -83,8 +83,8 @@ vv_money scott.emp.money%TYPE;
   end; 
 
          
---����ģ��
---Ȩ������ �� sql / cmd
+--过程模板
+--权限问题 ， sql / cmd
 /* 
 create or replace procedure query_test
 (p_id in scott.test.id%type,
@@ -96,7 +96,7 @@ create or replace procedure query_test
      from scott.test 
      where id=p_id;
  end query_test; 
---ʹ�÷�ʽ
+--使用方式
 execute query_test(408,:v_name,:v_dept)
  */ 
 
@@ -104,11 +104,11 @@ execute query_test(408,:v_name,:v_dept)
 
 
 /* 
-  ��ʼһ������ 
-  �ڡ����̡��ʺ����������ת�ʶ5000 Ԫ�� 
-  �ж��ʺš����ġ�������Ƿ�>=ת�ʶ� 
-  ����ǣ������ʺš����ġ��м�ת�ʶ���ύ���� 
-  ���򣬻ع����� 
+  开始一个事务 
+  在‘刘程’帐号余额中增加转帐额（5000 元） 
+  判断帐号‘李文’中余额是否>=转帐额 
+  如果是，则在帐号‘李文’中减转帐额，并提交事务 
+  否则，回滚事务 
  */ 
    BEGIN
          update account set balance=balance+v_num where ano=2;                  
@@ -161,11 +161,11 @@ execute query_test(408,:v_name,:v_dept)
 
 
          BEGIN
-             --�α���صĲ���������300��ʶֻ������Ա�ű��id����300 �ļ�¼, ������������������������������//
+             --游标相关的操作，参数300标识只处理雇员号编号id超过300 的记录, 函数？？？？？？？？？？？？？//
              OPEN test_cursor2(700);
              LOOP
                         FETCH test_cursor2 INTO test_rec;
-                        EXIT WHEN test_cursor2%NOTFOUND;            --���Ȣ�������ݾ��˳�ѭ�� LOOP �˳���ʽ
+                        EXIT WHEN test_cursor2%NOTFOUND;            --如果娶不到数据就退出循环 LOOP 退出格式
                     
                         IF test_rec.id < 400 THEN
                            -- UPDATE test set id=test_rec.id*10 where id=test_rec.id;

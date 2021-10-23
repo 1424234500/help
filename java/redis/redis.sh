@@ -5,10 +5,10 @@
 #
 ######################
 function help(){
-    out ' ./help_redis.sh del ms-broadcast* [ other args], del keys '
-    out ' ./help_redis.sh delttl ms-broadcast* 3600 [ h=3600 d=86400 15d=1296000], del keys expire seconds '
-    out ' ./help_redis.sh list ms-broadcast* [ other args], list keys '
-    out ' ./help_redis.sh show ms-broadcast*  [ other args], show the keys and values '
+    out ' ./redis.sh del ms-broadcast* [ other args], del keys '
+    out ' ./redis.sh delttl ms-broadcast* 3600 [ h=3600 d=86400 15d=1296000], del keys expire seconds '
+    out ' ./redis.sh list ms-broadcast* [ other args], list keys '
+    out ' ./redis.sh show ms-broadcast*  [ other args], show the keys and values '
     echo $exe
     eval $exe
 }

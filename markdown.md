@@ -35,9 +35,10 @@
 echo 代码段
 while echo ls
 ```
-### 表格
+### 表格 IDEA要求 ---
+
 id | name | age 
- - | - | - 
+--- | --- | ---
 1 | [plugins/dropbox/README.md][PlDb] |  15
 2 | [plugins/github/README.md][PlGh] |
 

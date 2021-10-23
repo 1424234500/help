@@ -1,4 +1,4 @@
-```
+
 function upload(){
 	sshuser=root@xxx		#scp -p *.gz root@xxx:/opt/upload/
 	if [ ! -z $1 ];then
@@ -121,5 +121,3 @@ function getGzName(){
 }
 
 source template.sh
-
-```

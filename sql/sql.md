@@ -4,10 +4,12 @@
 ```小数: 4 FLOAT = 8 DOUBLE ```
 ```长文本: 2^8 TINYTEXT  =   2^24 MEDIUMTEXT = 2^16 TEXT = 2^32 LONGTEXT  ```
 ```二进制: 2^8 TINYBLOB  =  2^24 MEDIUMBLOB = 2^16 BLOB = 2^32 LONGBLOB  ```
+
 对比参考 相同则不冗述
+
 数据结构 | 编码 | 大小 | 范围/格式/函数 | 编码 | 大小 | 范围/格式/函数 
--|-|-|-|-|-|-
--  | mysql | mysql | mysql | oracle | oracle | oracle 
+---|---|---|---|---|---|---
+mysql | mysql | mysql | oracle | oracle | oracle 
 整数值 | INTEGER(INT) | 4 | (-2^31, 2^31) | INTEGER | - |   (-2^31, 2^31) <br> NUMBER(P,0)
 浮点数 | FLOAT| 4 | (-3.xE+38，-1.xE-38) | FLOAT | - | 2^126 <br> trunc(1.5) round(1.23456, 4) <br> floor(1.5) ceil(1.5)
 小数值 | DECIMAL(M,D) |M>D?M+2:D+2 | convert('1.2', unsigned integer) | NUMBER(4,2) |   | 4位(含2位小数) <br> to_number('1.2')  

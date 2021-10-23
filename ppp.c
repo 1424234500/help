@@ -3,10 +3,10 @@
 */
 
 14qr sourcetree gitee
-14Qr ruaho.com
 qr36 git steam
 14@qr	https://dwalker.coding.net
-Qr36 oracle 
+Qr36 oracle
+qR36 Nvida
 16q csdn
 p3
 
@@ -35,6 +35,7 @@ WALKER
 WalkerDust3 1q 刀剑
 
 
- 
+
+
 
 

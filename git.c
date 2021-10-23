@@ -167,8 +167,8 @@ git remote rm origin
 git remote add origin http://192.168.100.235:9797/john/git_test.git
 
 //github ssh免密码登录 
-ssh-keygen -t rsa # 一直回车下去，不输入密码 生成密钥
-cat ~/.ssh/id_rsa.pub
+file=~/.ssh/id_rsa.pub; [ ! -f "${file}" ] && ssh-keygen -t rsa; cat "${file}" # 一直回车下去，不输入密码 生成密钥
+
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDsF1xYxThqOIkBHmhd8rlEOM6Wppl+cs95F6ztR2Kl30utGHh0qvFotgT+bhPE81NGlTTtfw1000dtyydyx+6JY4ClTOa856vMlDUaISXMAP346LAVodHskKB0/Kur9Zv4G9iwg1ccyJWfrx7QrultuX/yeLMa6WiyFPj4eLc4AksaUXVmqr282dtPodsO+TME+hvAuZksISgVC8PK56qjlg0CWdZdwD/gxKRe2j3Gn0lAZhvm9oTLkSn0sPRYp1+yYftOZNzBy3hY3pFYKB8JbpOXesWaXMfynGxOTXJuFP7xj6T+/Wp0mztAkxFVINznpZ675Udz2hNo3KyqHB8r walker@Walker
 github user setting add sshkey 
 
@@ -236,42 +236,4 @@ git reset --hard 3915130
 Unlink of file 'pro/WEB-INF/lib/DSPClient-1.0.2018092600.jar' failed. Should I t 
 ry again? (y/n) 
 y
-
-
-
-//sourcetree跳过登陆
-安装之后，转到用户本地文件夹下的 SourceTree 目录，没有则新建
-%LocalAppData%\Atlassian\SourceTree\
-新建 accounts.json 文件
-%LocalAppData%\Atlassian\SourceTree\accounts.json
-输入以下内容保存即可
-[
-  {
-    "$id": "1",
-    "$type": "SourceTree.Api.Host.Identity.Model.IdentityAccount, SourceTree.Api.Host.Identity",
-    "Authenticate": true,
-    "HostInstance": {
-      "$id": "2",
-      "$type": "SourceTree.Host.Atlassianaccount.AtlassianAccountInstance, SourceTree.Host.AtlassianAccount",
-      "Host": {
-        "$id": "3",
-        "$type": "SourceTree.Host.Atlassianaccount.AtlassianAccountHost, SourceTree.Host.AtlassianAccount",
-        "Id": "atlassian account"
-      },
-      "BaseUrl": "https://id.atlassian.com/"
-    },
-    "Credentials": {
-      "$id": "4",
-      "$type": "SourceTree.Model.BasicAuthCredentials, SourceTree.Api.Account",
-      "Username": "",
-      "Email": null
-    },
-    "IsDefault": false
-  }
-]
-
-现在再打开 SourceTree，直接显示主窗口了
-
-
-
 

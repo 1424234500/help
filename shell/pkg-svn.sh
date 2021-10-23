@@ -1,4 +1,4 @@
-```
+
 #!/bin/bash  
 ## 
 about="
@@ -146,4 +146,3 @@ function package(){
 	outWarn "package ok at   ${dirMakeInput}/${packageName}.tar.gz  " 
 	return 0
 }
-```
